@@ -1,0 +1,168 @@
+body {
+    background-image: url(bg.jpg);
+    background-size:cover;
+
+}
+
+#logo {
+    margin-top: 40px;
+    margin-left: 100px;
+
+}
+
+.logo {
+    height: 50px;
+    width: 200px;
+}
+
+#title {
+    font-size: 60px;
+    color: white;
+    margin-left: 100px;
+    margin-top: 100px;
+}
+
+.firsth1 {
+    font-family: "outfit";
+    font-weight: 300;
+}
+
+.secondh1 {
+    margin-top: -130px;
+    font-family: "outfit";
+}
+
+#midparagraph {
+    margin-left: 100px;
+    margin-top: -40px;
+    color: white;
+    font-family: "inter";
+    font-size: 18px;
+}
+
+#instruction {
+    color: #d20094;
+    font-family: "inter";
+    font-weight: bold;
+    font-size: 30px;
+}
+
+#midparagraph p {
+    margin-top: -18px;
+}
+
+#midparagraph ul {
+    margin-top: 50px;
+}
+
+#checkbox {
+    margin-top: 100px;
+    margin-left: 100px;
+    color: white;
+    font-family: "inter";
+    font-size: 16px;
+    display: flex;
+    align-items: center;    
+}
+
+#trusty {
+   height: 25px;
+   width: 25px;
+   border: solid 3px;
+   background-color: transparent;
+   display: grid;
+}
+
+#checkbox span {
+    margin-left: 15px;
+}
+
+#proceed {
+    margin-left: 400px;
+    height: 60px;
+    width: 230px;
+    font-size: 20px;
+    font-weight: bold;
+    background-color: #00ffff;
+    border: #00ffff;
+    cursor: pointer;
+}
+
+#proceed:hover {
+    box-shadow: 0 0 25px #00ffff;
+    transition: box-shadow 0.3s;
+}
+
+#quiz {
+   display: none;
+   text-align: center;
+}
+
+#question {
+    font-size: 60px;
+    font-family: "outfit";
+    font-weight: 300;
+    color: white;
+}
+
+#answers {
+    color: white;
+    font-size: 18px;
+    font-family: "inter";
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap-reverse;
+}
+
+#answers input {
+    margin: 50px;
+    cursor: pointer;
+}
+
+input[type="radio"] {
+    display: none;
+}
+
+label {
+    display: inline-block;
+    margin-top: 50px;
+    height: fit-content;
+    width: fit-content;
+    background-color: transparent;
+    color: white;
+    border-radius: 5px;
+    cursor: pointer;
+    border-radius: 20px;
+    padding: 20px 10px;
+}
+
+input[type="radio"]:checked + label {
+    background-color: #d20094;
+}
+
+#nextQuestion {
+    background-color: #00ffff;
+    height: 40px;
+    width: 150px;
+    color: rgb(17, 1, 17);
+    font-size: 16px;
+    border: #00ffff;
+    border-radius: 10px;
+    cursor:pointer;
+    margin-top: 100px;
+    align-self: center;
+}
+
+#divButtonNext {
+    display: flex;
+    justify-content: center;
+}
+
+.newH2 {
+    color: white;
+    text-align: center;
+    margin-top: 350px;
+    font-family: "outfit";
+    font-weight: 300;
+    font-size: 60px;
+}

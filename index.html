@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Epicode's Benchmark</title>
+    <link rel="stylesheet" href="style.css"/>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300&family=Prata&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300&family=Outfit:wght@200;700&family=Prata&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div id="logo">
+        <img class="logo" src="epicode_logo.png" alt="Epicode's logo"/>
+    </div>
+    <div id="main">    
+        <div id="title">
+            <h1 class="firsth1">Welcome to</h1>
+            <h1 class="secondh1">your exam</h1>
+        </div>
+        <div id="midparagraph">
+            <h2 id="Instructions">Instructions</h2>
+            <p>We don't expect most engineers to know the answers to all of these<br>questions, so don't worry if you're unsure of a few of them.</p>
+            <ul>
+                <li>Each question is <b>timed </b>and can only be <b>answered once</b>.</li>
+                <li>Changing browser tab or opening other windows will <b>invalidated the question</b>.</li>
+                <li>This exam will take approx. <b>0-5 minutes</b>.</li>
+            </ul>
+        </div>
+        <div id="checkbox">
+            <input type="checkbox" id="trusty">
+            <span><b>I promise to anwer myself without any help from anyone</b></span>
+            <button type="button" id="proceed" onclick="startTest()">PROCEED</button>
+        </div>    
+    </div>
+    <div id="quiz">
+        <h1 id="question"></h1>
+        <div id="answers">
+            <input type="radio" class="answer" id="opzione1" name="opzione" value="">
+            <label for="opzione1" id="primo"></label>
+  
+            <input type="radio" class="answer" id="opzione2" name="opzione" value="">
+            <label for="opzione2" id="secondo"></label>
+  
+            <input type="radio" class="answer" id="opzione3" name="opzione" value="">
+            <label for="opzione3" id="terzo"></label>
+  
+            <input type="radio" class="answer" id="opzione4" name="opzione" value="">
+            <label for="opzione4" id="quarto"></label>
+        </div>
+        <div id="divButtonNext">
+            <button onclick="nextQuestion()" id="nextQuestion">Next Question</button>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
