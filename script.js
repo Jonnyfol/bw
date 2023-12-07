@@ -98,6 +98,25 @@ const questions = [
   },
 ];
 
+
+let questionTimer;
+
+// avvia il timer per ogni domanda
+function startQuestionTimer() {
+  questionTimer = setTimeout(() => {
+    nextQuestion();//passo alla prossima, ma non funziona!!!
+  }, 5000); // 5 secondi
+}
+
+
+// Aggiungi questa funzione per resettare il timer ad ogni nuova domanda
+function resetQuestionTimer() {
+  clearTimeout(questionTimer);
+  startQuestionTimer();
+}
+
+
+
 //le due veriabili principali
 let score = 0;
 let questionNumber = 0;
@@ -133,7 +152,7 @@ if (questionNumber < questions.length) {
   let allAnswers = [correctAnswer].concat(questions[questionNumber].incorrect_answers);
 
   //mescola random le risposte
-  allAnswers = shuffleArray(allAnswers);
+  allAnswers = toRandomArray(allAnswers);
 
   //gestione caso in cui la domanda preveda solo due risposte
   if (questions[questionNumber].type === "multiple") {
@@ -150,12 +169,17 @@ if (questionNumber < questions.length) {
     answer4.style.display = "none";
   }  
 
+  startQuestionTimer();
+
+  resetQuestionTimer();
+
    // Aggiungi un evento di ascolto per gestire la risposta dell'utente
   let answerInputs = document.getElementsByClassName("answer");
     // tolgo un listener per ogni input di classe 'answer'
     for (let i = 0; i < answerInputs.length; i++) {
       answerInputs[i].checked = false;
     }
+
     // Aggiungi un listener per ogni input di classe 'answer'   
     for (let i = 0; i < answerInputs.length; i++) {
     answerInputs[i].addEventListener("click", checkAnswer); // do un evento di ascolto a ogni input di classe answer QUI CE IL BUG
@@ -165,14 +189,23 @@ if (questionNumber < questions.length) {
 }
 }
 
+
+
+
 // Funzione per mescolare casualmente un array utilizzando la funzione sort con logica di confronto casuale
-function shuffleArray(array) {
-return array.slice().sort(() => Math.random() - 0.5);
+function toRandomArray(array) {
+  let mixedArray = [];
+  while (array.length > 0) {
+    let randomIndex = Math.floor(Math.random() * array.length);
+    let randomElement = array.splice(randomIndex, 1)[0];
+    mixedArray.push(randomElement);
+  }
+  return mixedArray;
 }
 
 //funzione per vedere se la risposta è corretta
 function checkAnswer(event) {
-let userAnswer = event.target.textContent; // Ottieni la risposta selezionata dall'utente
+let userAnswer = event.target.nextElementSibling.textContent; // Ottieni la risposta selezionata dall'utente
 
 // Verifica se la risposta dell'utente è corretta
 if (userAnswer === questions[questionNumber].correct_answer) {
@@ -181,19 +214,28 @@ score ++; // Incrementa il punteggio se la risposta è corretta
 
 questionNumber++; // Passa alla prossima domanda
 
+resetQuestionTimer();
+
 let nextButton = document.getElementById("nextQuestion");
 nextButton.style.display = "block"; // Mostra il pulsante "Next Question"
-resetQuestionTimer(); // Resetta il timer per la domanda successiva
+
+resetQuestionTimer();
 }
 
 //quando premi il tasto next question scompare il bottone e fa ripartire la funzione principale delle domande e risposte
 function nextQuestion() {
 let nextButton = document.getElementById("nextQuestion");
 nextButton.style.display = "none"; // Nascondi il pulsante "Next Question"
-
-showQuest(); // Mostra la prossima domanda
-resetQuestionTimer();
+if (questionNumber < questions.length - 1) {
+  questionNumber++; // Passa alla prossima domanda
+  showQuest(); // Mostra la prossima domanda
+} else {
+  showResult(); // Mostriamo il risultato finale se abbiamo completato tutte le domande
 }
+}
+showQuest(); // Mostra la prossima domanda
+resetQuestionTimer(); // Resetta il timer per la domanda successiva
+
 
 
 //funzione del risultato
@@ -212,21 +254,6 @@ document.body.appendChild(result);
 
 
 
-let questionTimer;
-
-// avvia il timer per ogni domanda
-function startQuestionTimer() {
-  questionTimer = setTimeout(() => {
-    nextQuestion();//passo alla prossima, ma non funziona!!!
-  }, 5000); // 5 secondi
-}
-
-
-// Aggiungi questa funzione per resettare il timer ad ogni nuova domanda
-function resetQuestionTimer() {
-  clearTimeout(questionTimer);
-  startQuestionTimer();
-}
 
 
 
